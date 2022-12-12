@@ -187,8 +187,8 @@
           "name": "item_id",
           "required": true,
           "schema": {
-            "type": "string",
-            "minLength": 1
+            "type": "integer",
+            "minimum": 0
           }
         }
       ]
@@ -269,7 +269,7 @@
           }
         },
         "tags": [
-          "stores"
+          "Stores"
         ]
       },
       "delete": {
@@ -279,7 +279,7 @@
           }
         },
         "tags": [
-          "stores"
+          "Stores"
         ]
       },
       "parameters": [
@@ -288,8 +288,8 @@
           "name": "store_id",
           "required": true,
           "schema": {
-            "type": "string",
-            "minLength": 1
+            "type": "integer",
+            "minimum": 0
           }
         }
       ]
@@ -315,7 +315,7 @@
           }
         },
         "tags": [
-          "stores"
+          "Stores"
         ]
       },
       "post": {
@@ -348,7 +348,7 @@
           }
         },
         "tags": [
-          "stores"
+          "Stores"
         ]
       }
     },
@@ -415,8 +415,8 @@
           "name": "store_id",
           "required": true,
           "schema": {
-            "type": "string",
-            "minLength": 1
+            "type": "integer",
+            "minimum": 0
           }
         }
       ]
@@ -465,20 +465,20 @@
       "parameters": [
         {
           "in": "path",
-          "name": "item_id",
+          "name": "tag_id",
           "required": true,
           "schema": {
-            "type": "string",
-            "minLength": 1
+            "type": "integer",
+            "minimum": 0
           }
         },
         {
           "in": "path",
-          "name": "tag_id",
+          "name": "item_id",
           "required": true,
           "schema": {
-            "type": "string",
-            "minLength": 1
+            "type": "integer",
+            "minimum": 0
           }
         }
       ]
@@ -536,8 +536,8 @@
           "name": "tag_id",
           "required": true,
           "schema": {
-            "type": "string",
-            "minLength": 1
+            "type": "integer",
+            "minimum": 0
           }
         }
       ]
@@ -557,7 +557,7 @@
       "description": "Operations on items"
     },
     {
-      "name": "stores",
+      "name": "Stores",
       "description": "Operations on stores"
     },
     {
@@ -571,21 +571,21 @@
       "Error": {
         "type": "object",
         "properties": {
-          "code": {
-            "type": "integer",
-            "description": "Error code"
+          "message": {
+            "type": "string",
+            "description": "Error message"
           },
           "status": {
             "type": "string",
             "description": "Error name"
           },
+          "code": {
+            "type": "integer",
+            "description": "Error code"
+          },
           "errors": {
             "type": "object",
             "description": "Errors"
-          },
-          "message": {
-            "type": "string",
-            "description": "Error message"
           }
         }
       },
@@ -618,16 +618,16 @@
       "User": {
         "type": "object",
         "properties": {
-          "password": {
-            "type": "string",
-            "writeOnly": true
+          "id": {
+            "type": "integer",
+            "readOnly": true
           },
           "username": {
             "type": "string"
           },
-          "id": {
-            "type": "integer",
-            "readOnly": true
+          "password": {
+            "type": "string",
+            "writeOnly": true
           }
         },
         "required": [
@@ -635,46 +635,36 @@
           "username"
         ]
       },
-      "PlainTag": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "id": {
-            "type": "integer",
-            "readOnly": true
-          }
-        }
-      },
       "PlainStore": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          },
           "id": {
             "type": "integer",
             "readOnly": true
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PlainTag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string"
           }
         }
       },
       "Item": {
         "type": "object",
         "properties": {
-          "store_id": {
+          "id": {
             "type": "integer",
-            "writeOnly": true
-          },
-          "tags": {
-            "type": "array",
-            "readOnly": true,
-            "items": {
-              "$ref": "#/components/schemas/PlainTag"
-            }
-          },
-          "price": {
-            "type": "number"
+            "readOnly": true
           },
           "store": {
             "readOnly": true,
@@ -684,9 +674,19 @@
               }
             ]
           },
-          "id": {
+          "price": {
+            "type": "number"
+          },
+          "tags": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/PlainTag"
+            }
+          },
+          "store_id": {
             "type": "integer",
-            "readOnly": true
+            "writeOnly": true
           },
           "name": {
             "type": "string"
@@ -701,26 +701,26 @@
       "ItemUpdate": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
-          },
           "price": {
             "type": "number"
+          },
+          "name": {
+            "type": "string"
           }
         }
       },
       "PlainItem": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string"
+          "id": {
+            "type": "integer",
+            "readOnly": true
           },
           "price": {
             "type": "number"
           },
-          "id": {
-            "type": "integer",
-            "readOnly": true
+          "name": {
+            "type": "string"
           }
         },
         "required": [
@@ -731,16 +731,6 @@
       "Store": {
         "type": "object",
         "properties": {
-          "items": {
-            "type": "array",
-            "readOnly": true,
-            "items": {
-              "$ref": "#/components/schemas/PlainItem"
-            }
-          },
-          "name": {
-            "type": "string"
-          },
           "tags": {
             "type": "array",
             "readOnly": true,
@@ -751,15 +741,32 @@
           "id": {
             "type": "integer",
             "readOnly": true
+          },
+          "items": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/PlainItem"
+            }
+          },
+          "name": {
+            "type": "string"
           }
         }
       },
       "Tag": {
         "type": "object",
         "properties": {
-          "store_id": {
+          "id": {
             "type": "integer",
-            "writeOnly": true
+            "readOnly": true
+          },
+          "items": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/PlainItem"
+            }
           },
           "store": {
             "readOnly": true,
@@ -769,33 +776,26 @@
               }
             ]
           },
-          "id": {
+          "store_id": {
             "type": "integer",
-            "readOnly": true
+            "writeOnly": true
           },
           "name": {
             "type": "string"
-          },
-          "items": {
-            "type": "array",
-            "readOnly": true,
-            "items": {
-              "$ref": "#/components/schemas/PlainItem"
-            }
           }
         }
       },
       "TagAndItem": {
         "type": "object",
         "properties": {
-          "item": {
-            "$ref": "#/components/schemas/Item"
-          },
           "message": {
             "type": "string"
           },
           "tag": {
             "$ref": "#/components/schemas/Tag"
+          },
+          "item": {
+            "$ref": "#/components/schemas/Item"
           }
         }
       }
