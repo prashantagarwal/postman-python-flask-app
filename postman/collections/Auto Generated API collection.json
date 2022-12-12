@@ -1,0 +1,2465 @@
+{
+	"info": {
+		"_postman_id": "35cd2564-8660-4d98-8918-d3cefaa24a54",
+		"name": "Auto Generated API collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "1372588-35cd2564-8660-4d98-8918-d3cefaa24a54"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/logout",
+					"id": "dd4245b4-94ac-4bb2-b5a7-79d9777722b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{refresh_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "d0e9b94d-9212-4100-a99c-d8b584cc8d13",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/logout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/register",
+					"id": "c1b84b3a-ad84-4dae-bade-99263ede93b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"prshntagrwl\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "82b5fb76-6948-43ca-872c-11ce8a187fe6",
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"enim\",\n  \"username\": \"pariatur amet labore\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						},
+						{
+							"id": "9f39a4f5-7917-4cda-9afc-0a5307e39863",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"enim\",\n  \"username\": \"pariatur amet labore\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b37eefd-a917-404f-84e3-15fbe8aa249e",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"access_token\", jsonData.access_token);",
+									"pm.environment.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "99a6de3a-a8b7-40ee-8662-4f6b9bacf413",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "74319d2f-4637-437e-8645-1d52c6d60d9d",
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"enim\",\n  \"username\": \"pariatur amet labore\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						},
+						{
+							"id": "9a3a3a72-375f-4fbc-944b-4379996add45",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"enim\",\n  \"username\": \"pariatur amet labore\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/refresh",
+					"id": "3558534f-1e19-44bf-aede-72070d044696",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/refresh",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "37b0e144-3a40-47db-860b-813ace88dc95",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/refresh",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"refresh"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/user/:user_id",
+					"id": "92ea2a04-d321-4795-b0ba-102441f1f81b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/user/:user_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "79142707",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5e6187b8-a76a-4398-85aa-84f43afe4107",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:user_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "79142707",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"username\": \"ullamco labore Lorem\",\n  \"id\": -40018625\n}"
+						},
+						{
+							"id": "95f23194-51ec-4fca-a289-227abf39d405",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:user_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "79142707",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/user/:user_id",
+					"id": "30c05c66-b121-40f2-bc3c-5f9d387012d8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/user/:user_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "79142707",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "cae39bab-87e3-4a00-b569-9311ee04129f",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:user_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "79142707",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				}
+			],
+			"id": "a5000dcd-e099-4508-903b-1747833eabb7",
+			"description": "Operations on users"
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "/item/:item_id",
+					"id": "69746877-1dd0-4613-9dcd-ab2a857a2d5c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/item/:item_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"item",
+								":item_id"
+							],
+							"variable": [
+								{
+									"key": "item_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "0f6a0441-a366-4372-b558-18ad1beddeea",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"name\": \"esse Lorem in\",\n  \"price\": -55521883.311516576,\n  \"tags\": [\n    {\n      \"name\": \"tempor\",\n      \"id\": -50343120\n    },\n    {\n      \"name\": \"exercitation nisi sunt enim fugiat\",\n      \"id\": 9084652\n    }\n  ],\n  \"store\": {\n    \"name\": \"pariatur do dolore mollit culpa\",\n    \"id\": 27332720\n  },\n  \"id\": 8281492\n}"
+						},
+						{
+							"id": "85a098e8-cdac-436c-96b2-abcf73b34e1d",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/item/:item_id",
+					"id": "91284baa-10be-4e80-b448-4e00ca52d9d5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"do dolore\",\n  \"price\": -15846460.907098293\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/item/:item_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"item",
+								":item_id"
+							],
+							"variable": [
+								{
+									"key": "item_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "82eb9a06-0b1b-4ed5-a099-e078fee5c977",
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"do dolore\",\n  \"price\": -15846460.907098293\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"name\": \"esse Lorem in\",\n  \"price\": -55521883.311516576,\n  \"tags\": [\n    {\n      \"name\": \"tempor\",\n      \"id\": -50343120\n    },\n    {\n      \"name\": \"exercitation nisi sunt enim fugiat\",\n      \"id\": 9084652\n    }\n  ],\n  \"store\": {\n    \"name\": \"pariatur do dolore mollit culpa\",\n    \"id\": 27332720\n  },\n  \"id\": 8281492\n}"
+						},
+						{
+							"id": "590ab4d0-8673-4cdc-b7c9-4c32039ad51f",
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"do dolore\",\n  \"price\": -15846460.907098293\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						},
+						{
+							"id": "518ef9f9-7d69-4d87-b3a6-21e9f7606d25",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"do dolore\",\n  \"price\": -15846460.907098293\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/item/:item_id",
+					"id": "53f00a21-91b2-4c96-a86e-dfed655d9157",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/item/:item_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"item",
+								":item_id"
+							],
+							"variable": [
+								{
+									"key": "item_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "082b1fe3-1421-4e27-861d-5d260575e844",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/item",
+					"id": "5d17c3e8-f730-462f-9acd-247f17829f25",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/item",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"item"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "527e434b-c4e5-4562-9a5a-52c2da54af86",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"name\": \"magna ut\",\n    \"price\": -12611413.412609413,\n    \"tags\": [\n      {\n        \"name\": \"Lorem fugiat\",\n        \"id\": 37037622\n      },\n      {\n        \"name\": \"est dolor\",\n        \"id\": 50409697\n      }\n    ],\n    \"store\": {\n      \"name\": \"enim proident ex\",\n      \"id\": -33906223\n    },\n    \"id\": -49200783\n  },\n  {\n    \"name\": \"veniam do est exercitation\",\n    \"price\": -66858180.98554446,\n    \"tags\": [\n      {\n        \"name\": \"commodo\",\n        \"id\": 49722150\n      },\n      {\n        \"name\": \"nisi velit ad Ut\",\n        \"id\": 31575380\n      }\n    ],\n    \"store\": {\n      \"name\": \"tempor labore\",\n      \"id\": 58658858\n    },\n    \"id\": 31201339\n  }\n]"
+						},
+						{
+							"id": "a9d050d5-6014-4ba0-b1a1-10aa970350f8",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/item",
+					"id": "aea12a45-2d8f-49f4-984a-126a8966c6fc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"labore do non nisi\",\n  \"price\": -60320189.62754133,\n  \"store_id\": -98816588\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/item",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"item"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "d6162942-ab4d-4461-9d05-09a2f5d57882",
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"labore do non nisi\",\n  \"price\": -60320189.62754133,\n  \"store_id\": -98816588\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"name\": \"esse Lorem in\",\n  \"price\": -55521883.311516576,\n  \"tags\": [\n    {\n      \"name\": \"tempor\",\n      \"id\": -50343120\n    },\n    {\n      \"name\": \"exercitation nisi sunt enim fugiat\",\n      \"id\": 9084652\n    }\n  ],\n  \"store\": {\n    \"name\": \"pariatur do dolore mollit culpa\",\n    \"id\": 27332720\n  },\n  \"id\": 8281492\n}"
+						},
+						{
+							"id": "de58b9e4-ad85-4cc7-8bce-b17829da7214",
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"labore do non nisi\",\n  \"price\": -60320189.62754133,\n  \"store_id\": -98816588\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						},
+						{
+							"id": "0f54b872-4679-466a-8ede-c1dc0f60a7e7",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"labore do non nisi\",\n  \"price\": -60320189.62754133,\n  \"store_id\": -98816588\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/item",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				}
+			],
+			"id": "e3315bce-d0ca-4747-a0f2-d91ece16445a",
+			"description": "Operations on items"
+		},
+		{
+			"name": "stores",
+			"item": [
+				{
+					"name": "/store/:store_id",
+					"id": "8a31f209-bee9-4988-ae6d-cc3a60dfc2ec",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/store/:store_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store",
+								":store_id"
+							],
+							"variable": [
+								{
+									"key": "store_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "90acf8df-5348-42fa-8def-6746b0f03594",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"items\": [\n    {\n      \"name\": \"adipisicing nos\",\n      \"price\": 57695438.719442725,\n      \"id\": -44755302\n    },\n    {\n      \"name\": \"elit consequat\",\n      \"price\": 95757266.45194665,\n      \"id\": 92601011\n    }\n  ],\n  \"name\": \"Duis cupidatat ipsum\",\n  \"tags\": [\n    {\n      \"name\": \"Duis eu nisi mini\",\n      \"id\": -20353872\n    },\n    {\n      \"name\": \"consectetur sint et\",\n      \"id\": 68215947\n    }\n  ],\n  \"id\": 11826421\n}"
+						},
+						{
+							"id": "5c06984c-0b01-40b8-a9b4-0ab6e5c6ff02",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/store/:store_id",
+					"id": "d3fc35ef-232b-4b71-a658-029ae83246a9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/store/:store_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store",
+								":store_id"
+							],
+							"variable": [
+								{
+									"key": "store_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "ce8ef716-f0a4-46ad-bc99-51420b3e24d2",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/store",
+					"id": "9bfa9f9f-d90a-47d7-a82f-b1ebbdd39b49",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/store",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "e32d82db-db98-4e78-82ce-7b34b5ccaf73",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"items\": [\n      {\n        \"name\": \"pariatur\",\n        \"price\": 33828396.944261655,\n        \"id\": 14105664\n      },\n      {\n        \"name\": \"fugiat occaecat dolor\",\n        \"price\": 56421266.39947009,\n        \"id\": 52600859\n      }\n    ],\n    \"name\": \"fugiat non Lorem\",\n    \"tags\": [\n      {\n        \"name\": \"reprehenderit est et\",\n        \"id\": 98418795\n      },\n      {\n        \"name\": \"cupidatat Ut enim\",\n        \"id\": 47160210\n      }\n    ],\n    \"id\": -84070382\n  },\n  {\n    \"items\": [\n      {\n        \"name\": \"dolor tempor\",\n        \"price\": 40430295.800014675,\n        \"id\": -60617570\n      },\n      {\n        \"name\": \"qui sunt\",\n        \"price\": -45235573.063868314,\n        \"id\": -59443994\n      }\n    ],\n    \"name\": \"dolore et\",\n    \"tags\": [\n      {\n        \"name\": \"aliquip dolor nulla minim\",\n        \"id\": -25160474\n      },\n      {\n        \"name\": \"dolor cillum do commodo in\",\n        \"id\": -89295287\n      }\n    ],\n    \"id\": -14715895\n  }\n]"
+						},
+						{
+							"id": "ccdcd6c6-3b15-4239-bd46-5057aa71884b",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/store",
+					"id": "8d263bb7-c6e4-4d70-98dc-ef4defa21d25",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"non ullamco\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/store",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "b6002e48-0336-406b-8773-487fe335e852",
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"non ullamco\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/store",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"items\": [\n    {\n      \"name\": \"minim non esse\",\n      \"price\": -95582539.40561885,\n      \"id\": -33707053\n    },\n    {\n      \"name\": \"veniam dolore commodo sint qu\",\n      \"price\": 8150846.0353458375,\n      \"id\": 67807160\n    }\n  ],\n  \"name\": \"esse consectetur consequat\",\n  \"tags\": [\n    {\n      \"name\": \"reprehenderit culpa aute\",\n      \"id\": -41793856\n    },\n    {\n      \"name\": \"exercitation ullamco enim\",\n      \"id\": -60866840\n    }\n  ],\n  \"id\": -10709278\n}"
+						},
+						{
+							"id": "66e6fe6c-f44f-4d81-af33-d0d1571637c7",
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"non ullamco\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/store",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						},
+						{
+							"id": "2712096f-414e-44e4-82ab-799e5b945007",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"non ullamco\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/store",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				}
+			],
+			"id": "c5554c0e-5bd7-46c0-867d-8d59a7e909dc",
+			"description": "Operations on stores"
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "/store/:store_id/tag",
+					"id": "deae00be-3527-45c4-83fe-98bde913c805",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/store/:store_id/tag",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store",
+								":store_id",
+								"tag"
+							],
+							"variable": [
+								{
+									"key": "store_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "44f42d98-4af4-4f31-be3a-b3c0dcdd4cb3",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id/tag",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id",
+										"tag"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"store\": {\n      \"name\": \"velit ad commodo\",\n      \"id\": -5110220\n    },\n    \"id\": -68272713,\n    \"name\": \"nulla tempor\",\n    \"items\": [\n      {\n        \"name\": \"dolore reprehenderit ullamco\",\n        \"price\": -80826546.63623221,\n        \"id\": -8792479\n      },\n      {\n        \"name\": \"irure Duis\",\n        \"price\": -15770355.14961654,\n        \"id\": -35806690\n      }\n    ]\n  },\n  {\n    \"store\": {\n      \"name\": \"dolore culpa anim\",\n      \"id\": -17457924\n    },\n    \"id\": 16844703,\n    \"name\": \"exercitation sint pariatur cillum\",\n    \"items\": [\n      {\n        \"name\": \"proident exercitation mollit commodo\",\n        \"price\": 77247063.96360886,\n        \"id\": -38450073\n      },\n      {\n        \"name\": \"et laborum consectetur \",\n        \"price\": -16086781.607280895,\n        \"id\": 52632535\n      }\n    ]\n  }\n]"
+						},
+						{
+							"id": "5d00c168-c539-4c7d-ba3f-ba3df27a2eb0",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id/tag",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id",
+										"tag"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/store/:store_id/tag",
+					"id": "8dc30402-8c06-46ee-a817-2a27d386f1cf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"store_id\": -64696387,\n  \"name\": \"exercita\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/store/:store_id/tag",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"store",
+								":store_id",
+								"tag"
+							],
+							"variable": [
+								{
+									"key": "store_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "5632eeaf-a5bc-4228-a3ff-915192113e7a",
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"store_id\": -64696387,\n  \"name\": \"exercita\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id/tag",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id",
+										"tag"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"store\": {\n    \"name\": \"ipsum tempor Ut Excepteur\",\n    \"id\": -90541766\n  },\n  \"id\": -17527730,\n  \"name\": \"velit anim esse adipisicing eiusmod\",\n  \"items\": [\n    {\n      \"name\": \"nostrud in quis conse\",\n      \"price\": -96234158.13344339,\n      \"id\": 30999206\n    },\n    {\n      \"name\": \"in et\",\n      \"price\": -4289528.279997289,\n      \"id\": 94705251\n    }\n  ]\n}"
+						},
+						{
+							"id": "68c30294-8f1c-43f3-b223-451741a94595",
+							"name": "Unprocessable Entity",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"store_id\": -64696387,\n  \"name\": \"exercita\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id/tag",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id",
+										"tag"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						},
+						{
+							"id": "657d21d3-73c6-43eb-a10a-909166c696ab",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"store_id\": -64696387,\n  \"name\": \"exercita\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/store/:store_id/tag",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"store",
+										":store_id",
+										"tag"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/item/:item_id/tag/:tag_id",
+					"id": "fad71c26-fcef-4b8a-85eb-3cb70d08aa9c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/item/:item_id/tag/:tag_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"item",
+								":item_id",
+								"tag",
+								":tag_id"
+							],
+							"variable": [
+								{
+									"key": "item_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								},
+								{
+									"key": "tag_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "783a26f0-b4da-47a9-8108-9258c0aad740",
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id",
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										},
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"store\": {\n    \"name\": \"ipsum tempor Ut Excepteur\",\n    \"id\": -90541766\n  },\n  \"id\": -17527730,\n  \"name\": \"velit anim esse adipisicing eiusmod\",\n  \"items\": [\n    {\n      \"name\": \"nostrud in quis conse\",\n      \"price\": -96234158.13344339,\n      \"id\": 30999206\n    },\n    {\n      \"name\": \"in et\",\n      \"price\": -4289528.279997289,\n      \"id\": 94705251\n    }\n  ]\n}"
+						},
+						{
+							"id": "ecc73d07-ee45-4ca0-85c2-2da07831b9aa",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id",
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										},
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/item/:item_id/tag/:tag_id",
+					"id": "a997462d-65e0-43de-b976-2e49e4929662",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/item/:item_id/tag/:tag_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"item",
+								":item_id",
+								"tag",
+								":tag_id"
+							],
+							"variable": [
+								{
+									"key": "item_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								},
+								{
+									"key": "tag_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "cf63638d-3c4a-411d-be1e-0324c96bf3a0",
+							"name": "OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id",
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										},
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"item\": {\n    \"name\": \"est ut\",\n    \"price\": -42802514.53107642,\n    \"tags\": [\n      {\n        \"name\": \"anim in fugiat \",\n        \"id\": 13792471\n      },\n      {\n        \"name\": \"proident consequat ad\",\n        \"id\": -90030361\n      }\n    ],\n    \"store\": {\n      \"name\": \"Ut\",\n      \"id\": -26315227\n    },\n    \"id\": 25293574\n  },\n  \"message\": \"qui\",\n  \"tag\": {\n    \"store\": {\n      \"name\": \"laboris minim aliquip\",\n      \"id\": 5839087\n    },\n    \"id\": -24794282,\n    \"name\": \"non occaecat do in\",\n    \"items\": [\n      {\n        \"name\": \"id ullamco\",\n        \"price\": -60559970.07457421,\n        \"id\": 31077700\n      },\n      {\n        \"name\": \"officia\",\n        \"price\": 66353368.74820793,\n        \"id\": 19978472\n      }\n    ]\n  }\n}"
+						},
+						{
+							"id": "1f3554a8-4f77-454e-b799-1e221b5ae900",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/item/:item_id/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"item",
+										":item_id",
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										},
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/tag/:tag_id",
+					"id": "561d6fe5-0dee-48fe-a5cb-098fa9a04230",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tag/:tag_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tag",
+								":tag_id"
+							],
+							"variable": [
+								{
+									"key": "tag_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "406771cd-148b-4405-9afb-ec2a85c440b3",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"store\": {\n    \"name\": \"ipsum tempor Ut Excepteur\",\n    \"id\": -90541766\n  },\n  \"id\": -17527730,\n  \"name\": \"velit anim esse adipisicing eiusmod\",\n  \"items\": [\n    {\n      \"name\": \"nostrud in quis conse\",\n      \"price\": -96234158.13344339,\n      \"id\": 30999206\n    },\n    {\n      \"name\": \"in et\",\n      \"price\": -4289528.279997289,\n      \"id\": 94705251\n    }\n  ]\n}"
+						},
+						{
+							"id": "f6698bf3-687d-43eb-8ac5-7809bc03487f",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/tag/:tag_id",
+					"id": "c40123b2-e507-4772-9a12-a4b357ffd0d6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tag/:tag_id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tag",
+								":tag_id"
+							],
+							"variable": [
+								{
+									"key": "tag_id",
+									"value": "sunt labore dolor quis",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "3a324cc7-0985-48fd-943a-8b8c343a77ea",
+							"name": "Deletes a tag if no item is tagged with it.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"message\": \"Tag deleted.\"\n}"
+						},
+						{
+							"id": "be6a26b4-1360-4e61-a5fe-7ce577995bcc",
+							"name": "Returned if the tag is assigned to one or more items. In this case, the tag is not deleted.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "0fd0461c-7581-43c7-bcaa-55f77cab7332",
+							"name": "Tag not found.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "30a201d9-e3a0-48fa-aed3-71161c6b959d",
+							"name": "Default error response",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tag/:tag_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tag",
+										":tag_id"
+									],
+									"variable": [
+										{
+											"key": "tag_id",
+											"value": "sunt labore dolor quis",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"code\": -95897062,\n  \"status\": \"velit nisi\",\n  \"errors\": {},\n  \"message\": \"culpa Excepteur exercitation\"\n}"
+						}
+					]
+				}
+			],
+			"id": "8dc02582-01ed-46a4-99af-038b67f3f247",
+			"description": "Operations on tags"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "585faae3-7623-4869-be9b-f761bad5e428",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "25e1e97f-11e0-4b4f-922a-d94123642447",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "588ce57b-8b1a-4e6e-8f7f-1981a163c34f",
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:5005",
+			"type": "string"
+		}
+	]
+}
