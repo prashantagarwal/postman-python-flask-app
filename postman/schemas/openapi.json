@@ -465,7 +465,7 @@
       "parameters": [
         {
           "in": "path",
-          "name": "tag_id",
+          "name": "item_id",
           "required": true,
           "schema": {
             "type": "string",
@@ -474,7 +474,7 @@
         },
         {
           "in": "path",
-          "name": "item_id",
+          "name": "tag_id",
           "required": true,
           "schema": {
             "type": "string",
@@ -545,7 +545,7 @@
   },
   "info": {
     "title": "Stores REST API",
-    "version": "v1"
+    "version": "v1.1"
   },
   "tags": [
     {
@@ -571,21 +571,21 @@
       "Error": {
         "type": "object",
         "properties": {
-          "status": {
-            "type": "string",
-            "description": "Error name"
-          },
           "code": {
             "type": "integer",
             "description": "Error code"
           },
-          "message": {
+          "status": {
             "type": "string",
-            "description": "Error message"
+            "description": "Error name"
           },
           "errors": {
             "type": "object",
             "description": "Errors"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
           }
         }
       },
@@ -618,16 +618,16 @@
       "User": {
         "type": "object",
         "properties": {
+          "password": {
+            "type": "string",
+            "writeOnly": true
+          },
           "username": {
             "type": "string"
           },
           "id": {
             "type": "integer",
             "readOnly": true
-          },
-          "password": {
-            "type": "string",
-            "writeOnly": true
           }
         },
         "required": [
@@ -638,36 +638,43 @@
       "PlainTag": {
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string"
+          },
           "id": {
             "type": "integer",
             "readOnly": true
-          },
-          "name": {
-            "type": "string"
           }
         }
       },
       "PlainStore": {
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string"
+          },
           "id": {
             "type": "integer",
             "readOnly": true
-          },
-          "name": {
-            "type": "string"
           }
         }
       },
       "Item": {
         "type": "object",
         "properties": {
+          "store_id": {
+            "type": "integer",
+            "writeOnly": true
+          },
           "tags": {
             "type": "array",
             "readOnly": true,
             "items": {
               "$ref": "#/components/schemas/PlainTag"
             }
+          },
+          "price": {
+            "type": "number"
           },
           "store": {
             "readOnly": true,
@@ -676,13 +683,6 @@
                 "$ref": "#/components/schemas/PlainStore"
               }
             ]
-          },
-          "store_id": {
-            "type": "integer",
-            "writeOnly": true
-          },
-          "price": {
-            "type": "number"
           },
           "id": {
             "type": "integer",
@@ -701,26 +701,26 @@
       "ItemUpdate": {
         "type": "object",
         "properties": {
-          "price": {
-            "type": "number"
-          },
           "name": {
             "type": "string"
+          },
+          "price": {
+            "type": "number"
           }
         }
       },
       "PlainItem": {
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string"
+          },
           "price": {
             "type": "number"
           },
           "id": {
             "type": "integer",
             "readOnly": true
-          },
-          "name": {
-            "type": "string"
           }
         },
         "required": [
@@ -738,6 +738,9 @@
               "$ref": "#/components/schemas/PlainItem"
             }
           },
+          "name": {
+            "type": "string"
+          },
           "tags": {
             "type": "array",
             "readOnly": true,
@@ -748,21 +751,15 @@
           "id": {
             "type": "integer",
             "readOnly": true
-          },
-          "name": {
-            "type": "string"
           }
         }
       },
       "Tag": {
         "type": "object",
         "properties": {
-          "items": {
-            "type": "array",
-            "readOnly": true,
-            "items": {
-              "$ref": "#/components/schemas/PlainItem"
-            }
+          "store_id": {
+            "type": "integer",
+            "writeOnly": true
           },
           "store": {
             "readOnly": true,
@@ -772,27 +769,30 @@
               }
             ]
           },
-          "store_id": {
-            "type": "integer",
-            "writeOnly": true
-          },
           "id": {
             "type": "integer",
             "readOnly": true
           },
           "name": {
             "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "readOnly": true,
+            "items": {
+              "$ref": "#/components/schemas/PlainItem"
+            }
           }
         }
       },
       "TagAndItem": {
         "type": "object",
         "properties": {
-          "message": {
-            "type": "string"
-          },
           "item": {
             "$ref": "#/components/schemas/Item"
+          },
+          "message": {
+            "type": "string"
           },
           "tag": {
             "$ref": "#/components/schemas/Tag"
