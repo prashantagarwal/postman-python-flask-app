@@ -465,7 +465,7 @@
       "parameters": [
         {
           "in": "path",
-          "name": "tag_id",
+          "name": "item_id",
           "required": true,
           "schema": {
             "type": "integer",
@@ -474,7 +474,7 @@
         },
         {
           "in": "path",
-          "name": "item_id",
+          "name": "tag_id",
           "required": true,
           "schema": {
             "type": "integer",
@@ -545,7 +545,7 @@
   },
   "info": {
     "title": "Stores REST API",
-    "version": "v1.1"
+    "version": "v1.2"
   },
   "tags": [
     {
@@ -622,12 +622,12 @@
             "type": "integer",
             "readOnly": true
           },
-          "username": {
-            "type": "string"
-          },
           "password": {
             "type": "string",
             "writeOnly": true
+          },
+          "username": {
+            "type": "string"
           }
         },
         "required": [
@@ -662,10 +662,6 @@
       "Item": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "readOnly": true
-          },
           "store": {
             "readOnly": true,
             "allOf": [
@@ -674,8 +670,16 @@
               }
             ]
           },
-          "price": {
-            "type": "number"
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "store_id": {
+            "type": "integer",
+            "writeOnly": true
+          },
+          "name": {
+            "type": "string"
           },
           "tags": {
             "type": "array",
@@ -684,12 +688,8 @@
               "$ref": "#/components/schemas/PlainTag"
             }
           },
-          "store_id": {
-            "type": "integer",
-            "writeOnly": true
-          },
-          "name": {
-            "type": "string"
+          "price": {
+            "type": "number"
           }
         },
         "required": [
@@ -701,11 +701,11 @@
       "ItemUpdate": {
         "type": "object",
         "properties": {
-          "price": {
-            "type": "number"
-          },
           "name": {
             "type": "string"
+          },
+          "price": {
+            "type": "number"
           }
         }
       },
@@ -716,11 +716,11 @@
             "type": "integer",
             "readOnly": true
           },
-          "price": {
-            "type": "number"
-          },
           "name": {
             "type": "string"
+          },
+          "price": {
+            "type": "number"
           }
         },
         "required": [
@@ -757,10 +757,6 @@
       "Tag": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "readOnly": true
-          },
           "items": {
             "type": "array",
             "readOnly": true,
@@ -775,6 +771,10 @@
                 "$ref": "#/components/schemas/PlainStore"
               }
             ]
+          },
+          "id": {
+            "type": "integer",
+            "readOnly": true
           },
           "store_id": {
             "type": "integer",
